@@ -7,11 +7,9 @@ Why Use git rebase?
 Cleaner History: git rebase allows you to have a linear commit history without merge commits, making the history easier to follow.
 Easier to Read: If you're working on a feature branch and want to incorporate changes from the main branch, rebase will integrate those changes directly into your branch, rather than creating a separate commit for the merge.
 No Extra Merge Commits: Avoids creating unnecessary merge commits that can clutter the project history.
-How git rebase Works
+How git rebase Works:
 Let's say you have two branches:
-aaaaaaaaaa
-xDDDDDDDDDD
-DDDDDDDDD
+
 main (the main branch)
 feature (the branch you are working on)
 The commit history looks like this:
