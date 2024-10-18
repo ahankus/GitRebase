@@ -8,12 +8,10 @@ Cleaner History: git rebase allows you to have a linear commit history without m
 Easier to Read: If you're working on a feature branch and want to incorporate changes from the main branch, rebase will integrate those changes directly into your branch, rather than creating a separate commit for the merge.
 No Extra Merge Commits: Avoids creating unnecessary merge commits that can clutter the project history.
 How git rebase Works
-
-xddd
-
-
 Let's say you have two branches:
-
+aaaaaaaaaa
+xDDDDDDDDDD
+DDDDDDDDD
 main (the main branch)
 feature (the branch you are working on)
 The commit history looks like this:
