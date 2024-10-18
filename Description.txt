@@ -9,7 +9,7 @@ Easier to Read: If you're working on a feature branch and want to incorporate ch
 No Extra Merge Commits: Avoids creating unnecessary merge commits that can clutter the project history.
 How git rebase Works
 Let's say you have two branches:
-
+aaaaaaaaaa
 xDDDDDDDDDD
 DDDDDDDDD
 main (the main branch)
