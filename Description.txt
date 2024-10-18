@@ -1,0 +1,70 @@
+GIT REBASE
+
+What is git rebase?
+git rebase is a way to integrate changes from one branch into another by moving or "rebasing" the commits from the source branch onto the target branch. Unlike git merge, which creates a new "merge commit" that joins the two branches, git rebase rewrites the commit history.
+
+Why Use git rebase?
+Cleaner History: git rebase allows you to have a linear commit history without merge commits, making the history easier to follow.
+Easier to Read: If you're working on a feature branch and want to incorporate changes from the main branch, rebase will integrate those changes directly into your branch, rather than creating a separate commit for the merge.
+No Extra Merge Commits: Avoids creating unnecessary merge commits that can clutter the project history.
+How git rebase Works
+Let's say you have two branches:
+
+main (the main branch)
+feature (the branch you are working on)
+The commit history looks like this:
+
+A---B---C (main)
+     \
+      D---E (feature)
+Now, imagine new commits (F, G) have been added to main, and you want to integrate them into your feature branch:
+
+A---B---C---F---G (main)
+     \
+      D---E (feature)
+Using git merge
+If you use git merge main while on feature, it will look like this:
+
+A---B---C---F---G (main)
+     \           \
+      D---E-------H (feature)
+Result: A new merge commit (H) is created. The history shows a branching structure.
+Using git rebase
+If you use git rebase main while on feature, the commits from feature will be moved onto main, like this:
+
+A---B---C---F---G (main)
+                \
+                 D'---E' (feature)
+Result: No new merge commit. The commits D and E are moved after G and replayed as D' and E'. This makes the history linear and cleaner.
+Step-by-Step Example of git rebase
+Check out the feature branch:
+
+bash
+git checkout feature
+Run the rebase:
+
+bash
+git rebase main
+Resolve any conflicts that may arise:
+
+If there are conflicts, Git will pause the rebase process and ask you to resolve them. After fixing the conflicts, use:
+
+bash
+git add <file> # after resolving the conflicts
+git rebase --continue
+Force-push your changes if needed:
+
+If you're pushing to a remote branch after a rebase, use --force to overwrite the old history:
+
+bash
+git push --force
+Key Differences: git rebase vs. git merge
+Feature	git merge	git rebase
+History	Creates a new merge commit, keeping the branch structure.	Rewrites history to create a linear commit series.
+Usage	Keeps a detailed log of how and when changes were integrated.	Useful for cleaner, linear history without merge commits.
+Conflicts	Conflicts resolved once at merge.	Conflicts resolved for each commit during the rebase.
+Workflow	Suitable for preserving the history of all changes.	Suitable for cleaning up feature branches before merging.
+When to Use Each
+Use git merge when you want to preserve the full history of branches, including when they were merged. This is especially useful when collaborating with others and you need a clear record of how the branches came together.
+Use git rebase when you want to clean up your commit history and make it look like a linear sequence of changes. It’s a great choice when you are preparing a feature branch to merge into main without creating a merge commit.
+Note: Be careful when using git rebase on shared branches, as it rewrites history, and can cause issues for others who are working on the same branch.
